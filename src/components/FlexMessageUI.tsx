@@ -106,19 +106,44 @@ export default function FlexMessageUI({ summary, time }: FlexMessageUIProps) {
                                                     }}>
                                                         {/* Top Image (with padding inside as requested by screenshot) */}
                                                         {card.imageUrl && (
-                                                            <div style={{ padding: '8px', paddingBottom: '0' }}>
+                                                            <div style={{ padding: '8px', paddingBottom: '0', position: 'relative' }}>
                                                                 <div style={{
                                                                     width: '100%',
                                                                     height: '140px',
                                                                     borderRadius: '8px',
                                                                     overflow: 'hidden',
-                                                                    backgroundColor: '#f0f0f0'
+                                                                    backgroundColor: '#f0f0f0',
+                                                                    position: 'relative'
                                                                 }}>
                                                                     <img
                                                                         src={card.imageUrl}
                                                                         alt={card.title}
                                                                         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                                                                     />
+                                                                    <a
+                                                                        href="https://travel.line.me/journeys?tab=myJourney"
+                                                                        target="_blank"
+                                                                        rel="noopener noreferrer"
+                                                                        style={{
+                                                                            position: 'absolute',
+                                                                            top: '8px',
+                                                                            right: '8px',
+                                                                            backgroundColor: 'rgba(0, 0, 0, 0.65)',
+                                                                            color: 'white',
+                                                                            fontSize: '11px',
+                                                                            fontWeight: 'bold',
+                                                                            padding: '4px 8px',
+                                                                            borderRadius: '12px',
+                                                                            textDecoration: 'none',
+                                                                            display: 'flex',
+                                                                            alignItems: 'center',
+                                                                            gap: '4px',
+                                                                            backdropFilter: 'blur(4px)'
+                                                                        }}
+                                                                    >
+                                                                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                                                        新增到我的行程
+                                                                    </a>
                                                                 </div>
                                                             </div>
                                                         )}
