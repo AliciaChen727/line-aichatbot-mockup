@@ -381,11 +381,13 @@ body {
   }
 }
 
-.active-thumb-up {
+.active-thumb-up,
+.active-thumb-down {
   color: #ffffff !important;
 }
 
-.active-thumb-up svg {
+.active-thumb-up svg,
+.active-thumb-down svg {
   fill: #ffffff;
 }
 
