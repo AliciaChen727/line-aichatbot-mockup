@@ -321,7 +321,7 @@ export default function FlexMessageUI({ summary, time }: FlexMessageUIProps) {
                         {feedbackSubmitted && !showFeedbackMenu && (
                             <div className="feedback-popup" style={{ padding: '12px 16px', flexDirection: 'row', alignItems: 'center', gap: '8px' }}>
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#06C755" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
-                                <span style={{ fontSize: '13px', fontWeight: '500' }}>已經回饋送出</span>
+                                <span style={{ fontSize: '13px', fontWeight: '500' }}>感謝你的回饋</span>
                             </div>
                         )}
                     </div>
