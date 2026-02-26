@@ -76,6 +76,17 @@ export async function summarizeMessages(messages: ChatMessage[]): Promise<Parsed
     }
     if (allText.includes("富士山")) {
         summary.confirmedItinerary.push("河口湖看富士山");
+        // Inject a mocked Experience booking card for Mt Fuji
+        summary.bookingCards.push({
+            type: 'experience',
+            title: '富士山＆河口湖經典美景一日遊',
+            rating: 4.8,
+            price: 'NT$ 1,350 起',
+            imageUrl: 'https://images.pexels.com/photos/3408354/pexels-photo-3408354.jpeg?auto=compress&cs=tinysrgb&w=800',
+            actions: [
+                { label: '查看詳情', url: 'https://travel.line.me/poi/5ed7da7dfa3c974c94026268?liff.referrer=https%3A%2F%2Ftravel.line.me%2F' }
+            ]
+        });
     }
 
     if (allText.includes("逛街") && allText.includes("滑雪")) {
