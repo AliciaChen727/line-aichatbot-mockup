@@ -513,3 +513,75 @@ body {
     transform: translateY(0);
   }
 }
+
+/* LINE Context Menu */
+.line-context-menu {
+  background-color: #2b2b2b;
+  border-radius: 16px;
+  width: 280px;
+  padding: 8px 4px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #fff;
+}
+
+/* Optional tail if we want it to look like a speech bubble pointing down, though LINE usually just floats it */
+.line-context-tail {
+  position: absolute;
+  bottom: -6px;
+  left: 50%;
+  transform: translateX(-50%) rotate(45deg);
+  width: 12px;
+  height: 12px;
+  background-color: #2b2b2b;
+  z-index: -1;
+  display: none;
+  /* Hidden by default to match screenshot strictly floating, enable if needed */
+}
+
+.line-context-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 4px;
+}
+
+.line-context-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 4px;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.line-context-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.line-context-icon {
+  margin-bottom: 6px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Scale down icons slightly */
+.line-context-icon svg {
+  width: 20px;
+  height: 20px;
+  opacity: 0.9;
+}
+
+.line-context-label {
+  font-size: 10px;
+  color: #b3b3b3;
+  text-align: center;
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+}

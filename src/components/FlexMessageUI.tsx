@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import type { ParsedSummary } from './Summarizer';
+import LineContextMenu from './LineContextMenu';
 
 interface FlexMessageUIProps {
     summary: ParsedSummary | null;
@@ -11,11 +12,21 @@ export default function FlexMessageUI({ summary, time }: FlexMessageUIProps) {
     const [isThumbUpActive, setIsThumbUpActive] = useState(false);
     const [isThumbDownActive, setIsThumbDownActive] = useState(false);
     const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
+    const [contextMenuPos, setContextMenuPos] = useState<{ x: number; y: number } | null>(null);
+
     // Treat null summary as loading state
     const isLoading = !summary;
 
     return (
-        <div className="message-row bot animate-popIn">
+        <div
+            className="message-row bot animate-popIn"
+            onContextMenu={(e) => {
+                // Determine if click was inside the feedback actions to avoid overriding its events,
+                // though usually we want the whole message to trigger the menu.
+                e.preventDefault();
+                setContextMenuPos({ x: e.clientX, y: e.clientY });
+            }}
+        >
             <div className="bot-avatar flex-shrink-0 flex items-center justify-center text-white font-bold rounded-full mr-2" style={{ width: '36px', height: '36px', fontSize: '14px', background: 'linear-gradient(135deg, var(--line-primary), #11e06a)' }}>
                 AI
             </div>
@@ -315,6 +326,11 @@ export default function FlexMessageUI({ summary, time }: FlexMessageUIProps) {
                     </div>
                 )}
             </div>
+
+            <LineContextMenu
+                position={contextMenuPos}
+                onClose={() => setContextMenuPos(null)}
+            />
         </div>
     );
 }
