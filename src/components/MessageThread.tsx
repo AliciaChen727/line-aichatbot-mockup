@@ -165,7 +165,8 @@ export default function MessageThread() {
                                         backgroundColor: 'var(--bubble-bot-bg)',
                                         color: 'var(--bubble-bot-text)',
                                         borderTopLeftRadius: '4px',
-                                        borderBottomLeftRadius: '18px'
+                                        borderBottomLeftRadius: '18px',
+                                        maxWidth: '100%'
                                     }}>
                                         {data.text}
                                     </div>

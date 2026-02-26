@@ -15,18 +15,20 @@ export default function FlexMessageUI({ summary, time }: FlexMessageUIProps) {
             <div className="bot-avatar flex-shrink-0 flex items-center justify-center text-white font-bold rounded-full mr-2" style={{ width: '36px', height: '36px', fontSize: '14px', background: 'linear-gradient(135deg, var(--line-primary), #11e06a)' }}>
                 AI
             </div>
-            <div style={{ display: 'flex', flexDirection: 'column', maxWidth: '85%' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', flex: 1, minWidth: 0 }}>
                 <span style={{ fontSize: '11px', marginBottom: '4px', marginLeft: '4px', color: isLoading ? "var(--line-primary)" : "var(--text-muted)", fontWeight: isLoading ? "bold" : "normal" }}>
                     {isLoading ? "旅遊助手處理中..." : "旅遊助手"}
                 </span>
-                <div style={{ display: 'flex', alignItems: 'flex-end' }}>
+                <div style={{ display: 'flex', alignItems: 'flex-end', maxWidth: '100%' }}>
                     <div className="message-bubble" style={{
                         backgroundColor: 'var(--bubble-bot-bg)',
                         color: 'var(--bubble-bot-text)',
                         borderTopLeftRadius: '4px',
                         borderBottomLeftRadius: '18px',
                         padding: isLoading ? '12px 16px' : '6px',
-                        overflow: 'hidden'
+                        overflow: 'hidden',
+                        maxWidth: '100%',
+                        flex: '0 1 auto'
                     }}>
                         {isLoading ? (
                             <div className="typing-indicator m-0">
@@ -35,7 +37,7 @@ export default function FlexMessageUI({ summary, time }: FlexMessageUIProps) {
                                 <div className="typing-dot"></div>
                             </div>
                         ) : (
-                            <div className="bg-white dark:bg-[#1f2c34] rounded-[12px] overflow-hidden border border-gray-100 dark:border-gray-800" style={{ minWidth: '240px', maxWidth: '100%', wordBreak: 'break-word' }}>
+                            <div className="bg-white dark:bg-[#1f2c34] rounded-[12px] overflow-hidden border border-gray-100 dark:border-gray-800" style={{ width: '280px', maxWidth: '100%', wordBreak: 'break-word' }}>
                                 {/* Flex Header */}
                                 <div className="bg-[#0b2447] text-white p-3">
                                     <div className="flex justify-between items-center mb-1">
@@ -207,7 +209,7 @@ export default function FlexMessageUI({ summary, time }: FlexMessageUIProps) {
                         )}
                     </div>
                     {!isLoading && (
-                        <span style={{ fontSize: '11px', color: 'var(--text-muted)', marginLeft: '6px', marginBottom: '2px', lineHeight: '1', whiteSpace: 'nowrap' }}>
+                        <span style={{ fontSize: '11px', color: 'var(--text-muted)', marginLeft: '6px', marginBottom: '2px', lineHeight: '1', whiteSpace: 'nowrap', flexShrink: 0 }}>
                             {time}
                         </span>
                     )}
