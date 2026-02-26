@@ -24,6 +24,7 @@ export default function FlexMessageUI({ summary, time }: FlexMessageUIProps) {
                 // Determine if click was inside the feedback actions to avoid overriding its events,
                 // though usually we want the whole message to trigger the menu.
                 e.preventDefault();
+                e.stopPropagation(); // Prevents bubbling to window which instantly closes the context menu
                 setContextMenuPos({ x: e.clientX, y: e.clientY });
             }}
         >

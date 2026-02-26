@@ -30,13 +30,18 @@ export default function LineContextMenu({ position, onClose }: LineContextMenuPr
         };
 
         // Listen for scroll or click to dismiss menu
+        // Use a tiny timeout so the event that opened the menu doesn't trigger the close listener immediately
+        let timeoutId: NodeJS.Timeout;
         if (position) {
-            window.addEventListener('click', handleClickOutside);
-            window.addEventListener('scroll', handleClickOutside, true); // true to catch capture phase before scroll changes layout
-            window.addEventListener('contextmenu', handleClickOutside);
+            timeoutId = setTimeout(() => {
+                window.addEventListener('click', handleClickOutside);
+                window.addEventListener('scroll', handleClickOutside, true); // true to catch capture phase before scroll changes layout
+                window.addEventListener('contextmenu', handleClickOutside);
+            }, 50);
         }
 
         return () => {
+            clearTimeout(timeoutId);
             window.removeEventListener('click', handleClickOutside);
             window.removeEventListener('scroll', handleClickOutside, true);
             window.removeEventListener('contextmenu', handleClickOutside);
