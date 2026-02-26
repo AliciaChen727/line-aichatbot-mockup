@@ -1,4 +1,5 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 
 interface Point {
     x: number;
@@ -24,7 +25,11 @@ const MENU_ITEMS = [
 ];
 
 export default function LineContextMenu({ position, onClose }: LineContextMenuProps) {
+    const [mounted, setMounted] = useState(false);
+
     useEffect(() => {
+        setMounted(true);
+
         const handleClickOutside = (e: Event) => {
             onClose();
         };
@@ -48,17 +53,17 @@ export default function LineContextMenu({ position, onClose }: LineContextMenuPr
         };
     }, [position, onClose]);
 
-    if (!position) return null;
+    if (!position || !mounted) return null;
 
-    // Render using fixed positioning so it overlays everything
-    return (
+    // Render using fixed positioning so it overlays everything, using a Portal so it's not trapped by parent CSS transforms
+    return createPortal(
         <div
             className="line-context-menu"
             style={{
                 position: 'fixed',
                 top: Math.min(position.y, window.innerHeight - 250) + 'px', // Prevent falling off bottom edge
                 left: Math.max(10, Math.min(position.x - 140, window.innerWidth - 300)) + 'px', // Prevent falling off right/left edge (approx width 280)
-                zIndex: 9999
+                zIndex: 999999
             }}
             onClick={(e) => e.stopPropagation()}
             // Prevent the custom context menu itself from triggering another context menu
@@ -78,6 +83,7 @@ export default function LineContextMenu({ position, onClose }: LineContextMenuPr
                 ))}
             </div>
             <div className="line-context-tail"></div>
-        </div>
+        </div>,
+        document.body
     );
 }
