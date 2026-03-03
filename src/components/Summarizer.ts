@@ -24,6 +24,7 @@ export type BookingCard = {
 };
 
 export type ParsedSummary = {
+    highlights: string[];
     confirmedItinerary: string[];
     estimatedBudget: string;
     pendingItems: string[];
@@ -42,6 +43,11 @@ export async function summarizeMessages(messages: ChatMessage[]): Promise<Parsed
     const allText = messages.map(m => m.text.toLowerCase()).join(" ");
 
     const summary: ParsedSummary = {
+        highlights: [
+            "🏂 越後湯澤滑雪確認！",
+            "💰 預算約 45,000-60,000 /人",
+            "🍽️ 晚餐想吃燒肉，需協調逛街時間"
+        ],
         confirmedItinerary: [],
         estimatedBudget: "目前資訊不足",
         pendingItems: [],
