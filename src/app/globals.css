@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 :root {
   --line-primary: #06C755;
   --line-primary-hover: #05A747;
