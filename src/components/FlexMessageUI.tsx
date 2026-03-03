@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import type { ParsedSummary } from './Summarizer';
 import LineContextMenu from './LineContextMenu';
 import LiffItineraryModal from './LiffItineraryModal';
@@ -15,6 +16,11 @@ export default function FlexMessageUI({ summary, time }: FlexMessageUIProps) {
     const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
     const [contextMenuPos, setContextMenuPos] = useState<{ x: number; y: number } | null>(null);
     const [showLiff, setShowLiff] = useState(false);
+
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => {
+        setMounted(true);
+    }, []);
 
     // Treat null summary as loading state
     const isLoading = !summary;
@@ -186,11 +192,12 @@ export default function FlexMessageUI({ summary, time }: FlexMessageUIProps) {
             />
 
             {/* LIFF Full Screen Itinerary Details Modal */}
-            {showLiff && summary && (
+            {showLiff && summary && mounted && createPortal(
                 <LiffItineraryModal
                     summary={summary}
                     onClose={() => setShowLiff(false)}
-                />
+                />,
+                document.querySelector('.app-container') || document.body
             )}
         </div>
     );
