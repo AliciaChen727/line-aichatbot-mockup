@@ -98,11 +98,32 @@ export default function FlexMessageUI({ summary, time }: FlexMessageUIProps) {
                                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
                                                 【待定事項/討論】
                                             </h4>
-                                            <ul className="pl-4 list-disc space-y-0.5 opacity-90 m-0">
+                                            <ul className="pl-4 list-disc space-y-0.5 opacity-90 m-0 mb-2">
                                                 {summary!.pendingItems.map((item, i) => (
                                                     <li key={i}>{item}</li>
                                                 ))}
                                             </ul>
+
+                                            {/* AI Proactive Suggestion for Conflicts */}
+                                            {summary!.pendingItems.some(item => item.includes('衝') || item.includes('滑雪')) && (
+                                                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-2.5 mt-2 border border-blue-100 dark:border-blue-800/50">
+                                                    <div className="flex items-start gap-1.5">
+                                                        <svg className="mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                                                        <span className="text-blue-700 dark:text-blue-400 font-bold text-[12px]">旅遊助手建議</span>
+                                                    </div>
+                                                    <p className="text-blue-800 dark:text-blue-300 text-[12px] mt-1 mb-0 leading-relaxed font-medium">
+                                                        偵測到行程分歧！建議第三天早上安排<span className="font-bold underline">原宿逛街</span>，同時安排專車送另一批人前往<span className="font-bold underline">室內滑雪場</span>，晚上再於新宿會合吃燒肉，這樣大家都能玩得開心！
+                                                    </p>
+                                                    <div className="mt-2 flex gap-2">
+                                                        <button className="flex-1 bg-white dark:bg-[#1a232b] text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-700/50 rounded py-1 px-2 text-[11px] font-bold shadow-sm hover:bg-blue-50 transition-colors">
+                                                            採用此分組方案
+                                                        </button>
+                                                        <button className="flex-1 bg-white dark:bg-[#1a232b] text-gray-500 border border-gray-200 dark:border-gray-700 rounded py-1 px-2 text-[11px] font-bold shadow-sm hover:bg-gray-50 transition-colors">
+                                                            再討論看看
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            )}
                                         </div>
 
                                         {/* Recommended Bookings */}
