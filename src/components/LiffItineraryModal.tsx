@@ -34,7 +34,7 @@ export default function LiffItineraryModal({ summary, onClose }: LiffItineraryMo
     };
 
     return (
-        <div className="fixed inset-0 z-50 bg-white dark:bg-[#111111] flex flex-col h-full w-full animate-slideUp">
+        <div className="absolute inset-0 z-50 bg-white dark:bg-[#111111] flex flex-col h-full w-full animate-slideUp">
             {/* Header */}
             <div className="flex items-center justify-between p-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-[#111111] shadow-sm z-10 sticky top-0">
                 <div className="flex items-center gap-3">
