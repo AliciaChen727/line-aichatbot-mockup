@@ -237,27 +237,33 @@ export default function FlexMessageUI({ summary, time }: FlexMessageUIProps) {
                                                             display: 'flex',
                                                             gap: '8px'
                                                         }}>
-                                                            {card.actions.map((action, actionIdx) => (
-                                                                <a
-                                                                    key={actionIdx}
-                                                                    href={action.url}
-                                                                    target="_blank"
-                                                                    rel="noopener noreferrer"
-                                                                    style={{
-                                                                        flex: 1,
-                                                                        textAlign: 'center',
-                                                                        fontSize: '13px',
-                                                                        fontWeight: 'bold',
-                                                                        padding: '10px 0',
-                                                                        borderRadius: '8px',
-                                                                        backgroundColor: actionIdx === 0 ? "var(--line-primary)" : "#f3f4f6",
-                                                                        color: actionIdx === 0 ? "white" : "var(--text-main)",
-                                                                        textDecoration: "none"
-                                                                    }}
-                                                                >
-                                                                    {action.label}
-                                                                </a>
-                                                            ))}
+                                                            {card.actions.map((action, actionIdx) => {
+                                                                const isPrimary = action.label === '立即預訂';
+                                                                return (
+                                                                    <a
+                                                                        key={actionIdx}
+                                                                        href={action.url}
+                                                                        target="_blank"
+                                                                        rel="noopener noreferrer"
+                                                                        style={{
+                                                                            flex: 1,
+                                                                            textAlign: 'center',
+                                                                            fontSize: '13px',
+                                                                            fontWeight: 'bold',
+                                                                            padding: '10px 0',
+                                                                            borderRadius: '8px',
+                                                                            backgroundColor: isPrimary ? "var(--line-primary)" : "#f3f4f6",
+                                                                            color: isPrimary ? "white" : "var(--text-main)",
+                                                                            textDecoration: "none",
+                                                                            transition: "opacity 0.2s",
+                                                                        }}
+                                                                        onMouseOver={(e) => e.currentTarget.style.opacity = "0.8"}
+                                                                        onMouseOut={(e) => e.currentTarget.style.opacity = "1"}
+                                                                    >
+                                                                        {action.label}
+                                                                    </a>
+                                                                );
+                                                            })}
                                                         </div>
                                                     </div>
                                                 ))}
