@@ -112,7 +112,7 @@ export default function FlexMessageUI({ summary, time }: FlexMessageUIProps) {
                                                         <span className="text-blue-700 dark:text-blue-400 font-bold text-[12px]">旅遊助手建議</span>
                                                     </div>
                                                     <p className="text-blue-800 dark:text-blue-300 text-[12px] mt-1 mb-0 leading-relaxed font-medium">
-                                                        偵測到行程分歧！建議第三天早上安排<span className="font-bold underline">原宿逛街</span>，同時安排專車送另一批人前往<span className="font-bold underline">室內滑雪場</span>，晚上再於新宿會合吃燒肉，這樣大家都能玩得開心！
+                                                        偵測到行程分歧！建議早上安排<span className="font-bold underline">越後湯澤車站逛街</span>，同時安排專車送另一批人前往<span className="font-bold underline">越後湯澤滑雪場</span>，晚上再會合吃燒肉，這樣大家都能玩得開心！
                                                     </p>
                                                     <div className="mt-2 flex gap-2">
                                                         <button className="flex-1 bg-white dark:bg-[#1a232b] text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-700/50 rounded py-1 px-2 text-[11px] font-bold shadow-sm hover:bg-blue-50 transition-colors">
