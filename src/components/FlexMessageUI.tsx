@@ -220,7 +220,7 @@ export default function FlexMessageUI({ summary, time }: FlexMessageUIProps) {
                                                                     flexDirection: 'column',
                                                                     gap: '6px'
                                                                 }}>
-                                                                    <span>{card.price}</span>
+                                                                    {card.price && <span>{card.price}</span>}
                                                                     {card.linePointsReward && (
                                                                         <div style={{
                                                                             fontSize: '11px',
