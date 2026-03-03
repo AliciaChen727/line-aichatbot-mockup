@@ -55,7 +55,7 @@ export default function FlexMessageUI({ summary, time }: FlexMessageUIProps) {
                         ) : (
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                                 <div style={{ fontSize: '14px', lineHeight: '1.5' }}>
-                                    我幫大家彙整了剛才討論的重點，這是大家想去的行程草稿，若有任何問題歡迎隨時呼叫我 旅遊助手 ：）
+                                    我幫大家彙整了剛才討論的重點，這是大家想去的行程草稿，若有任何問題歡迎隨時呼叫我 旅遊助手 😊
                                 </div>
                                 <div className="bg-white dark:bg-[#1f2c34] border border-gray-100 dark:border-gray-800" style={{ width: '280px', maxWidth: '100%', wordBreak: 'break-word' }}>
                                     {/* Flex Header */}
