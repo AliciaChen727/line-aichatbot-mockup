@@ -20,6 +20,7 @@ export type BookingCard = {
     price: string;
     imageUrl: string;
     actions: { label: string, url: string }[];
+    linePointsReward?: number;
 };
 
 export type ParsedSummary = {
@@ -59,7 +60,8 @@ export async function summarizeMessages(messages: ChatMessage[]): Promise<Parsed
             actions: [
                 { label: '查看詳情', url: 'https://www.klook.com/zh-TW/hotels/detail/558686-shosenkaku-kagetsu/?spm=SearchResult.SearchResult_LIST&clickId=93be432246' },
                 { label: '立即預訂', url: 'https://www.klook.com/zh-TW/hotels/detail/558686-shosenkaku-kagetsu/?spm=SearchResult.SearchResult_LIST&clickId=93be432246' }
-            ]
+            ],
+            linePointsReward: 8
         });
 
         // Inject a mocked Experience booking card for Ski Lesson
@@ -71,7 +73,8 @@ export async function summarizeMessages(messages: ChatMessage[]): Promise<Parsed
             imageUrl: 'https://images.pexels.com/photos/848682/pexels-photo-848682.jpeg?auto=compress&cs=tinysrgb&w=800',
             actions: [
                 { label: '看體驗', url: 'https://www.klook.com/zh-TW/activity/128393-echigo-yuzawa-ski-lesson/?ad_feed_id=560&aid=api%7C13179%7CYZYzcMjK1B&openExternalBrowser=1&utm_medium=affiliate-alwayson&utm_source=non-network&utm_campaign=13179&utm_term=' }
-            ]
+            ],
+            linePointsReward: 5
         });
     }
     if (allText.includes("富士山")) {
@@ -85,7 +88,8 @@ export async function summarizeMessages(messages: ChatMessage[]): Promise<Parsed
             imageUrl: 'https://images.pexels.com/photos/3408354/pexels-photo-3408354.jpeg?auto=compress&cs=tinysrgb&w=800',
             actions: [
                 { label: '查看詳情', url: 'https://travel.line.me/poi/5ed7da7dfa3c974c94026268?liff.referrer=https%3A%2F%2Ftravel.line.me%2F' }
-            ]
+            ],
+            linePointsReward: 5
         });
     }
 
@@ -118,7 +122,8 @@ export async function summarizeMessages(messages: ChatMessage[]): Promise<Parsed
             imageUrl: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=400&auto=format&fit=crop',
             actions: [
                 { label: '查看航班', url: 'https://travel.line.me/flights/list?roundType=1&cabinClass=1&numOfAdult=1&numOfChildren=0&numOfBaby=0&linePointsRebateOnly=1&departureAirports=&departureCities=TPE&departureDates=1772668800000&arrivalAirports=&arrivalCities=TYO&departureAirports=&departureCities=TYO&departureDates=1773273600000&arrivalAirports=&arrivalCities=TPE' }
-            ]
+            ],
+            linePointsReward: 2
         });
     }
 

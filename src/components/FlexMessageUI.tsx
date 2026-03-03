@@ -190,9 +190,43 @@ export default function FlexMessageUI({ summary, time }: FlexMessageUIProps) {
                                                                 fontWeight: 'bold',
                                                                 fontSize: '16px',
                                                                 paddingBottom: '8px',
-                                                                color: 'var(--line-primary)'
+                                                                color: 'var(--line-primary)',
+                                                                display: 'flex',
+                                                                flexDirection: 'column',
+                                                                gap: '6px'
                                                             }}>
-                                                                {card.price}
+                                                                <span>{card.price}</span>
+                                                                {card.linePointsReward && (
+                                                                    <div style={{
+                                                                        fontSize: '11px',
+                                                                        color: '#06C755',
+                                                                        backgroundColor: '#E6F9EE',
+                                                                        padding: '2px 6px',
+                                                                        borderRadius: '4px',
+                                                                        display: 'inline-flex',
+                                                                        alignItems: 'center',
+                                                                        gap: '4px',
+                                                                        alignSelf: 'flex-start',
+                                                                        fontWeight: 'bold',
+                                                                        lineHeight: '1.2'
+                                                                    }}>
+                                                                        <div style={{
+                                                                            width: '14px',
+                                                                            height: '14px',
+                                                                            borderRadius: '50%',
+                                                                            backgroundColor: '#06C755',
+                                                                            color: 'white',
+                                                                            display: 'flex',
+                                                                            alignItems: 'center',
+                                                                            justifyContent: 'center',
+                                                                            fontSize: '10px',
+                                                                            fontWeight: '900',
+                                                                            fontFamily: 'sans-serif',
+                                                                            flexShrink: 0
+                                                                        }}>P</div>
+                                                                        <span>預訂可享 <span style={{ fontSize: '13px' }}>{card.linePointsReward}%</span> LINE Points 回饋</span>
+                                                                    </div>
+                                                                )}
                                                             </div>
                                                         </div>
 
