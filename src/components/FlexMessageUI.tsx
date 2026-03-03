@@ -57,7 +57,7 @@ export default function FlexMessageUI({ summary, time }: FlexMessageUIProps) {
                                 <div style={{ fontSize: '14px', lineHeight: '1.5' }}>
                                     我幫大家彙整了剛才討論的重點，這是大家想去的行程草稿...
                                 </div>
-                                <div className="bg-white dark:bg-[#1f2c34] rounded-[12px] overflow-hidden border border-gray-100 dark:border-gray-800" style={{ width: '280px', maxWidth: '100%', wordBreak: 'break-word' }}>
+                                <div className="bg-white dark:bg-[#1f2c34] border border-gray-100 dark:border-gray-800" style={{ width: '280px', maxWidth: '100%', wordBreak: 'break-word' }}>
                                     {/* Flex Header */}
                                     <div className="bg-[#0b2447] text-white p-3">
                                         <div className="flex justify-between items-center mb-1">
