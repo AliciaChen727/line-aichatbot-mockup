@@ -162,7 +162,7 @@ export async function summarizeMessages(messages: ChatMessage[]): Promise<Parsed
             imageUrl: 'https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=800', // Default hotel image
             actions: [
                 { label: '查看詳情', url: 'https://travel.line.me/hotels/61f5349a6452b9154cd625c2?checkinDate=2026-03-11&checkoutDate=2026-03-12&numOfAdult=2&numOfChildren=0&numOfRoom=1' },
-                { label: '立即預訂', url: 'https://travel.line.me/hotels/61f5349a6452b9154cd625c2?checkinDate=2026-03-11&checkoutDate=2026-03-12&numOfAdult=2&numOfChildren=0&numOfRoom=1' }
+                { label: '立即預訂', url: 'https://www.agoda.com/zh-tw/nishitetsu-inn-shinjuku/hotel/tokyo-jp.html?cid=1807871&currency=TWD&checkin=2026-03-11&checkout=2026-03-12&numberofchildren=0&mcid=27938&masterroomid=3135656&tag=DV968VSPaZ&hid=234458&adults=2&rooms=1&los=1&pslc=1&ds=pkRigr9ki4sp2GDW' }
             ],
             linePointsReward: 8
         });
