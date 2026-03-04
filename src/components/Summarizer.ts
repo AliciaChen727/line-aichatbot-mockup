@@ -160,7 +160,7 @@ export async function summarizeMessages(messages: ChatMessage[]): Promise<Parsed
             rating: 0,
             price: 'TWD 2,237',
             // Using a direct Shinkansen E5 series image
-            imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/JRE_Shinkansen_E5.jpg/1200px-JRE_Shinkansen_E5.jpg',
+            imageUrl: '/shinkansen_niigata.jpg',
             actions: [
                 { label: '查看詳情', url: 'https://www.kkday.com/zh-tw/transportation/list_page/japan-rail/jp-tokyo-rail-to-jp-niigata-rail?dep_code=JP-2-00001&arr_code=JP-2-00085&dep_date=20260311' },
                 { label: '立即預訂', url: 'https://www.kkday.com/zh-tw/transportation/list_page/japan-rail/jp-tokyo-rail-to-jp-niigata-rail?dep_code=JP-2-00001&arr_code=JP-2-00085&dep_date=20260311' }
@@ -175,7 +175,7 @@ export async function summarizeMessages(messages: ChatMessage[]): Promise<Parsed
             rating: 0,
             price: 'TWD 861',
             // Using a direct E353 series (Azusa/Kaiji/Fuji Excursion) image
-            imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/E353_series_S101_formation_20150726.jpg/1200px-E353_series_S101_formation_20150726.jpg',
+            imageUrl: '/fuji_excursion.jpg',
             actions: [
                 { label: '查看詳情', url: 'https://www.kkday.com/zh-tw/transportation/list_page/japan-rail/jp-shinjuku-rail-to-jp-shimo-yoshida-rail?dep_code=JP-2-00111&arr_code=JP-2-00133&dep_date=20260311' },
                 { label: '立即預訂', url: 'https://www.kkday.com/zh-tw/transportation/list_page/japan-rail/jp-shinjuku-rail-to-jp-shimo-yoshida-rail?dep_code=JP-2-00111&arr_code=JP-2-00133&dep_date=20260311' }
