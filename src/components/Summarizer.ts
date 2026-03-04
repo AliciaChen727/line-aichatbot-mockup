@@ -90,7 +90,7 @@ export async function summarizeMessages(messages: ChatMessage[]): Promise<Parsed
     if (allText.includes("越後湯澤") || allText.includes("滑雪")) {
         summary.bookingCards.push({
             type: 'hotel', title: '松泉閤花月 (Shosenkaku Kagetsu)', rating: 4.6, price: 'NT$ 7,495 / 晚',
-            imageUrl: 'https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=800',
+            imageUrl: '/shosenkaku_kagetsu.jpg',
             actions: [{ label: '查看詳情', url: 'https://www.klook.com/zh-TW/hotels/detail/558686-shosenkaku-kagetsu/?spm=SearchResult.SearchResult_LIST&clickId=93be432246' }, { label: '立即預訂', url: 'https://www.klook.com/zh-TW/hotels/detail/558686-shosenkaku-kagetsu/?spm=SearchResult.SearchResult_LIST&clickId=93be432246' }],
             linePointsReward: 8
         });
