@@ -152,6 +152,20 @@ export async function summarizeMessages(messages: ChatMessage[]): Promise<Parsed
             ],
             linePointsReward: 2
         });
+
+        // Add Tokyo Hotel
+        summary.bookingCards.push({
+            type: 'hotel',
+            title: '新宿西鐵酒店',
+            rating: 4.8,
+            price: 'NT$ 4,959 / 晚',
+            imageUrl: 'https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=800', // Default hotel image
+            actions: [
+                { label: '查看詳情', url: 'https://travel.line.me/hotels/61f5349a6452b9154cd625c2?checkinDate=2026-03-11&checkoutDate=2026-03-12&numOfAdult=2&numOfChildren=0&numOfRoom=1' },
+                { label: '立即預訂', url: 'https://travel.line.me/hotels/61f5349a6452b9154cd625c2?checkinDate=2026-03-11&checkoutDate=2026-03-12&numOfAdult=2&numOfChildren=0&numOfRoom=1' }
+            ],
+            linePointsReward: 8
+        });
     }
 
     // Fallback defaults if no keywords matched
