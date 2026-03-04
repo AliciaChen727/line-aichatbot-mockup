@@ -105,6 +105,19 @@ export async function summarizeMessages(messages: ChatMessage[]): Promise<Parsed
                 { label: '查看詳情', url: 'https://travel.line.me/poi/5ed7da59fa3c974c9401b9b2?liff.referrer=https%3A%2F%2Ftravel.line.me%2F' }
             ]
         });
+
+        summary.bookingCards.push({
+            type: 'hotel',
+            title: 'cottage Di MUSiCA',
+            rating: 4.5, // Mocked rating, users can adjust if needed
+            price: 'NT$ 4,263 / 晚',
+            imageUrl: 'https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=800', // Reusing a hotel placeholder
+            actions: [
+                { label: '查看詳情', url: 'https://travel.line.me/hotels/61f5353c6452b9154cd7e06e?checkinDate=2026-03-11&checkoutDate=2026-03-12&numOfAdult=4&numOfChildren=0&numOfRoom=1' },
+                { label: '立即預訂', url: 'https://travel.line.me/hotels/61f5353c6452b9154cd7e06e?checkinDate=2026-03-11&checkoutDate=2026-03-12&numOfAdult=4&numOfChildren=0&numOfRoom=1' }
+            ],
+            linePointsReward: 5 // 5% reward
+        });
     }
 
     if (allText.includes("逛街") && allText.includes("滑雪")) {
