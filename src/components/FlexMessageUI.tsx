@@ -14,6 +14,15 @@ export default function FlexMessageUI({ summary, time }: FlexMessageUIProps) {
     const [feedbackSubmitted, setFeedbackSubmitted] = useState(false);
     const [contextMenuPos, setContextMenuPos] = useState<{ x: number; y: number } | null>(null);
 
+    const [adoptCount, setAdoptCount] = useState(0);
+    const [discussCount, setDiscussCount] = useState(0);
+    const [hasVotedAdopt, setHasVotedAdopt] = useState(false);
+    const [hasVotedDiscuss, setHasVotedDiscuss] = useState(false);
+    const [showAdoptPopup, setShowAdoptPopup] = useState(false);
+    const [showDiscussPopup, setShowDiscussPopup] = useState(false);
+    const [showDiscussSuccessPopup, setShowDiscussSuccessPopup] = useState(false);
+    const [discussText, setDiscussText] = useState("");
+
     // Treat null summary as loading state
     const isLoading = !summary;
 
@@ -105,24 +114,190 @@ export default function FlexMessageUI({ summary, time }: FlexMessageUIProps) {
                                             </ul>
 
                                             {/* AI Proactive Suggestion for Conflicts */}
-                                            {summary!.pendingItems.some(item => item.includes('衝') || item.includes('滑雪')) && (
-                                                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-2.5 mt-2 border border-blue-100 dark:border-blue-800/50">
+                                            {summary!.conflictResolutionDraft && (
+                                                <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-2.5 mt-2 border border-blue-100 dark:border-blue-800/50 relative overflow-hidden">
+                                                    {/* Adopt Popup Overlay (Specifically covering this blue suggestion block) */}
+                                                    {showAdoptPopup && (
+                                                        <div
+                                                            className="absolute inset-0 z-50 flex items-center justify-center animate-[popIn_0.2s_ease-out]"
+                                                            style={{ backgroundColor: 'rgba(0, 0, 0, 0.45)', backdropFilter: 'blur(2px)' }}
+                                                            onClick={e => e.stopPropagation()}
+                                                        >
+                                                            <div
+                                                                className="bg-white dark:bg-[#1f2c34] rounded-[16px] w-[260px] max-w-[95%] shadow-[0_8px_30px_rgb(0,0,0,0.2)] overflow-hidden flex flex-col items-center justify-center"
+                                                                onClick={e => e.stopPropagation()}
+                                                            >
+                                                                <div className="p-4 pb-3 flex flex-col items-center text-center">
+                                                                    <h3 className="font-bold text-[16px] mb-1.5 text-[#111] dark:text-gray-100 flex items-center justify-center gap-1.5 leading-none">
+                                                                        <span className="bg-[#06C755] text-white rounded-[4px] w-[18px] h-[18px] flex items-center justify-center text-[12px] transform translate-y-[-1px]">✓</span>
+                                                                        投票成功！
+                                                                    </h3>
+                                                                    <p className="text-[12px] leading-relaxed text-[#666] dark:text-gray-400 m-0">
+                                                                        感謝參與，目前已記錄您的選擇。<br />若同意人數超過半數，這項行程就會正式同步到大家的行事曆喔
+                                                                    </p>
+                                                                </div>
+                                                                <div className="w-full border-t border-gray-100 dark:border-gray-800">
+                                                                    <button
+                                                                        className="w-full py-2.5 text-blue-600 dark:text-blue-400 font-bold text-[14px] hover:bg-gray-50 dark:hover:bg-[#1a232b] transition-colors"
+                                                                        onClick={() => setShowAdoptPopup(false)}
+                                                                    >
+                                                                        確定
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    )}
+
+                                                    {/* Discuss Popup Overlay (Specifically covering this blue suggestion block) */}
+                                                    {showDiscussPopup && (
+                                                        <div
+                                                            className="absolute inset-0 z-50 flex items-center justify-center animate-[popIn_0.2s_ease-out]"
+                                                            style={{ backgroundColor: 'rgba(0, 0, 0, 0.45)', backdropFilter: 'blur(2px)' }}
+                                                            onClick={e => e.stopPropagation()}
+                                                        >
+                                                            <div
+                                                                className="bg-white dark:bg-[#1f2c34] rounded-[16px] w-[260px] max-w-[95%] shadow-[0_8px_30px_rgb(0,0,0,0.2)] flex flex-col items-center justify-center pt-4 overflow-hidden"
+                                                                onClick={e => e.stopPropagation()}
+                                                            >
+                                                                <div className="flex flex-col items-center text-center w-full px-4 mb-3">
+                                                                    <div className="w-10 h-10 bg-gray-100 dark:bg-gray-800 rounded-full flex items-center justify-center mb-2">
+                                                                        <span className="text-[20px]">🤔</span>
+                                                                    </div>
+                                                                    <h3 className="font-bold text-[15px] mb-1 text-[#111] dark:text-gray-100 leading-tight">
+                                                                        請問您不滿意的部分是？
+                                                                    </h3>
+                                                                    <p className="text-[12px] text-[#666] dark:text-gray-400 m-0 mb-3">
+                                                                        （例如：預算太高、地點太遠等）
+                                                                    </p>
+                                                                    <textarea
+                                                                        className="w-full bg-gray-50 dark:bg-[#151f25] border border-gray-200 dark:border-gray-700 rounded-lg p-2.5 text-[13px] text-gray-800 dark:text-gray-200 placeholder-gray-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-shadow"
+                                                                        style={{ minHeight: '60px', resize: 'none' }}
+                                                                        placeholder="輸入您的具體想法..."
+                                                                        value={discussText}
+                                                                        onChange={(e) => setDiscussText(e.target.value)}
+                                                                    />
+                                                                </div>
+                                                                <div className="w-full flex border-t border-gray-100 dark:border-gray-800">
+                                                                    <button
+                                                                        className="flex-1 py-2.5 text-gray-500 dark:text-gray-400 font-bold text-[14px] hover:bg-gray-50 dark:hover:bg-[#1a232b] transition-colors border-r border-gray-100 dark:border-gray-800"
+                                                                        onClick={() => {
+                                                                            setShowDiscussPopup(false);
+                                                                            setDiscussCount(prev => Math.max(0, prev - 1));
+                                                                            setHasVotedDiscuss(false);
+                                                                        }}
+                                                                    >
+                                                                        取消
+                                                                    </button>
+                                                                    <button
+                                                                        className="flex-1 py-2.5 text-blue-600 dark:text-blue-400 font-bold text-[14px] hover:bg-blue-50/50 dark:hover:bg-[#1a232b] transition-colors"
+                                                                        onClick={() => {
+                                                                            setShowDiscussPopup(false);
+                                                                            setDiscussText(""); // Mock form submittion
+                                                                            setShowDiscussSuccessPopup(true);
+                                                                        }}
+                                                                    >
+                                                                        送出
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    )}
+
+                                                    {/* Discuss Success Popup Overlay */}
+                                                    {showDiscussSuccessPopup && (
+                                                        <div
+                                                            className="absolute inset-0 z-50 flex items-center justify-center animate-[popIn_0.2s_ease-out]"
+                                                            style={{ backgroundColor: 'rgba(0, 0, 0, 0.45)', backdropFilter: 'blur(2px)' }}
+                                                            onClick={e => e.stopPropagation()}
+                                                        >
+                                                            <div
+                                                                className="bg-white dark:bg-[#1f2c34] rounded-[16px] w-[260px] max-w-[95%] shadow-[0_8px_30px_rgb(0,0,0,0.2)] overflow-hidden flex flex-col items-center justify-center"
+                                                                onClick={e => e.stopPropagation()}
+                                                            >
+                                                                <div className="p-4 pb-3 flex flex-col items-center text-center">
+                                                                    <h3 className="font-bold text-[16px] mb-1.5 text-[#111] dark:text-gray-100 flex items-center justify-center gap-1.5 leading-none">
+                                                                        <span className="bg-[#06C755] text-white rounded-[4px] w-[18px] h-[18px] flex items-center justify-center text-[12px] transform translate-y-[-1px]">✓</span>
+                                                                        送出成功
+                                                                    </h3>
+                                                                    <p className="text-[12px] leading-relaxed text-[#666] dark:text-gray-400 m-0">
+                                                                        收到！感謝回饋。<br />這部分我會先紀錄，下次產出新行程時會一併納入考量喔！
+                                                                    </p>
+                                                                </div>
+                                                                <div className="w-full border-t border-gray-100 dark:border-gray-800">
+                                                                    <button
+                                                                        className="w-full py-2.5 text-blue-600 dark:text-blue-400 font-bold text-[14px] hover:bg-gray-50 dark:hover:bg-[#1a232b] transition-colors"
+                                                                        onClick={() => setShowDiscussSuccessPopup(false)}
+                                                                    >
+                                                                        確定
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    )}
+
                                                     <div className="flex items-start gap-1.5">
                                                         <svg className="mt-0.5 flex-shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#3b82f6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
                                                         <span className="text-blue-700 dark:text-blue-400 font-bold text-[12px]">旅遊助手建議</span>
                                                     </div>
                                                     <p className="text-blue-800 dark:text-blue-300 text-[12px] mt-1 mb-0 leading-relaxed font-medium">
-                                                        偵測到行程分歧！由於越後湯澤（新潟）與河口湖（山梨）分處東京的一北一南，建議以東京為核心，規劃V字型放射狀行程。推薦使用 「JR東京廣域周遊券」，一張票即可輕鬆搞定新幹線與特急列車的高昂交通費。<br /><br />
-                                                        Day 1-2越後湯澤：直奔越後湯澤，早晨分頭行動，一組人由專車接送至滑雪場享受粉雪，另一組則在越後湯澤車站悠閒逛街、品嚐清酒，晚上再聚首大啖暖心燒肉。<br />
-                                                        Day3河口湖：返回東京並轉乘直達河口湖，與壯麗的富士山相遇。<br />
-                                                        Day4東京市區：重返東京市區，享受最後的購物衝刺。分進合擊的完美安排，讓滑雪愛好者與觀光族都能盡興而歸！
+                                                        {summary!.conflictResolutionDraft.reason.split('\\n\\n').map((paragraph, index, array) => (
+                                                            <React.Fragment key={index}>
+                                                                {paragraph.split('\\n').map((line, i, lines) => (
+                                                                    <React.Fragment key={i}>
+                                                                        {line}
+                                                                        {i < lines.length - 1 && <br />}
+                                                                    </React.Fragment>
+                                                                ))}
+                                                                {index < array.length - 1 && <><br /><br /></>}
+                                                            </React.Fragment>
+                                                        ))}
                                                     </p>
                                                     <div className="mt-2 flex gap-2">
-                                                        <button className="flex-1 bg-white dark:bg-[#1a232b] text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-700/50 rounded py-1 px-2 text-[11px] font-bold shadow-sm hover:bg-blue-50 transition-colors">
-                                                            採用此分組方案
+                                                        <button
+                                                            className={`flex-1 flex items-center justify-center gap-1.5 border rounded py-1 px-2 text-[11px] font-bold shadow-sm transition-colors ${hasVotedAdopt
+                                                                ? "bg-blue-600 dark:bg-blue-500 text-white border-blue-600 dark:border-blue-500 hover:bg-blue-700"
+                                                                : "bg-white dark:bg-[#1a232b] text-blue-600 dark:text-blue-400 border-blue-200 dark:border-blue-700/50 hover:bg-blue-50"
+                                                                }`}
+                                                            onClick={() => {
+                                                                if (!hasVotedAdopt) {
+                                                                    setAdoptCount(prev => prev + 1);
+                                                                    setHasVotedAdopt(true);
+                                                                    setShowAdoptPopup(true);
+                                                                } else {
+                                                                    setAdoptCount(prev => prev - 1);
+                                                                    setHasVotedAdopt(false);
+                                                                }
+                                                            }}
+                                                        >
+                                                            <span>採用此分組方案</span>
+                                                            {adoptCount > 0 && (
+                                                                <span className="flex items-center justify-center bg-blue-100 dark:bg-blue-900/50 text-blue-700 dark:text-blue-300 rounded-full min-w-[16px] h-[16px] text-[10px] px-1">
+                                                                    {adoptCount}
+                                                                </span>
+                                                            )}
                                                         </button>
-                                                        <button className="flex-1 bg-white dark:bg-[#1a232b] text-gray-500 border border-gray-200 dark:border-gray-700 rounded py-1 px-2 text-[11px] font-bold shadow-sm hover:bg-gray-50 transition-colors">
-                                                            再討論看看
+                                                        <button
+                                                            className={`flex-1 flex items-center justify-center gap-1.5 border rounded py-1 px-2 text-[11px] font-bold shadow-sm transition-colors ${hasVotedDiscuss
+                                                                ? "bg-gray-600 dark:bg-gray-500 text-white border-gray-600 dark:border-gray-500 hover:bg-gray-700"
+                                                                : "bg-white dark:bg-[#1a232b] text-gray-500 dark:text-gray-400 border-gray-200 dark:border-gray-700 hover:bg-gray-50"
+                                                                }`}
+                                                            onClick={() => {
+                                                                if (!hasVotedDiscuss) {
+                                                                    setDiscussCount(prev => prev + 1);
+                                                                    setHasVotedDiscuss(true);
+                                                                    setShowDiscussPopup(true);
+                                                                } else {
+                                                                    setDiscussCount(prev => prev - 1);
+                                                                    setHasVotedDiscuss(false);
+                                                                }
+                                                            }}
+                                                        >
+                                                            <span>再討論看看</span>
+                                                            {discussCount > 0 && (
+                                                                <span className="flex items-center justify-center bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full min-w-[16px] h-[16px] text-[10px] px-1">
+                                                                    {discussCount}
+                                                                </span>
+                                                            )}
                                                         </button>
                                                     </div>
                                                 </div>

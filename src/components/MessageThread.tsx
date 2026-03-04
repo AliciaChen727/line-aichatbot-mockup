@@ -107,8 +107,30 @@ export default function MessageThread() {
     return (
         <div className="app-container group-chat">
             {/* Header */}
-            <div className="chat-header justify-center sticky top-0 bg-white dark:bg-[#1f2c34] z-50 py-3 shadow-sm" style={{ backgroundColor: 'var(--header-bg)' }}>
-                <span className="bot-name font-bold text-lg">日本滑雪行 🏂 (5)</span>
+            <div className="chat-header sticky top-0 bg-white dark:bg-[#1f2c34] z-50 py-3 shadow-sm flex items-center justify-between" style={{ backgroundColor: 'var(--header-bg)', paddingLeft: '16px', paddingRight: '16px' }}>
+                <div className="flex items-center">
+                    <span className="bot-name font-bold text-lg">日本滑雪行 🏂 (5)</span>
+                </div>
+
+                {/* Right Action Icons */}
+                <div className="flex items-center gap-4" style={{ color: 'var(--text-main)', opacity: 0.8 }}>
+                    {/* Search */}
+                    <button aria-label="Search" className="hover:opacity-70 transition-opacity flex items-center justify-center">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
+                    {/* Phone */}
+                    <button aria-label="Call" className="hover:opacity-70 transition-opacity flex items-center justify-center">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                    </button>
+                    {/* Notes/List */}
+                    <button aria-label="Notes" className="hover:opacity-70 transition-opacity flex items-center justify-center">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"></rect><line x1="8" y1="8" x2="16" y2="8"></line><line x1="8" y1="12" x2="16" y2="12"></line><line x1="8" y1="16" x2="16" y2="16"></line></svg>
+                    </button>
+                    {/* More Options / Kebab Menu */}
+                    <button aria-label="More options" className="hover:opacity-70 transition-opacity flex items-center justify-center">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="2" fill="currentColor"></circle><circle cx="12" cy="5" r="2" fill="currentColor"></circle><circle cx="12" cy="19" r="2" fill="currentColor"></circle></svg>
+                    </button>
+                </div>
             </div>
 
             {/* Messages */}
