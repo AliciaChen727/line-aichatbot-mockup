@@ -73,7 +73,7 @@ export async function summarizeMessages(messages: ChatMessage[]): Promise<Parsed
     if (allText.includes("日本") || allText.includes("東京") || allText.includes("廣域") || allText.includes("周遊券")) {
         summary.bookingCards.push({
             type: 'experience', title: 'JR 東京廣域周遊券', rating: 0, price: 'TWD 3,110',
-            imageUrl: 'https://image.kkday.com/v2/image/get/w_1000%2Cc_fit/s1.kkday.com/product_158964/20240118025211_bNofl/jpeg',
+            imageUrl: '/twp_new.jpg',
             actions: [{ label: '查看詳情', url: 'https://www.kkday.com/zh-tw/product/158964?ud1=bmLmxozICA&cid=5954&openExternalBrowser=1' }, { label: '立即預訂', url: 'https://www.kkday.com/zh-tw/product/158964?ud1=bmLmxozICA&cid=5954&openExternalBrowser=1' }],
             linePointsReward: 0.5
         });
