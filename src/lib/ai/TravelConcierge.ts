@@ -155,7 +155,7 @@ export async function processGroupChat(messages: ChatMessage[]): Promise<ParsedS
 
     // Common flights
     if (allText.includes("日本") || allText.includes("東京")) {
-        baseSummary.bookingCards!.unshift(...AgentTools.search_travel_inventory("機票", {}));
+        baseSummary.bookingCards!.push(...AgentTools.search_travel_inventory("機票", {}));
         baseSummary.bookingCards!.push({
             type: 'hotel', title: '新宿西鐵酒店', rating: 4.8, price: 'NT$ 4,959 / 晚',
             imageUrl: '/nishitetsu_inn.jpg',
@@ -180,6 +180,54 @@ export async function processGroupChat(messages: ChatMessage[]): Promise<ParsedS
             baseSummary.pendingItems!.push("無特別待定事項");
         }
     }
+
+    // Deduplicate booking cards by title to avoid duplicates if multiple intents triggered
+    const uniqueCardsMap = new Map();
+    baseSummary.bookingCards!.forEach(card => uniqueCardsMap.set(card.title, card));
+    baseSummary.bookingCards = Array.from(uniqueCardsMap.values());
+
+    // User requested explicit sort order
+    const exactOrder = [
+        "台北 (TPE) ⇌ 東京 (NRT) 來回機票",
+        "JR 東京廣域周遊券",
+        "越後湯澤車站",
+        "松泉閤花月 (Shosenkaku Kagetsu)",
+        "cottage Di MUSiCA",
+        "新宿西鐵酒店",
+        "湯澤滑雪場中文私人滑雪課程",
+        "燒肉さかえや",
+        "富士山・河口湖美景觀光 自行車租借河口湖巡游"
+    ];
+
+    baseSummary.bookingCards.sort((a, b) => {
+        const indexA = exactOrder.indexOf(a.title);
+        const indexB = exactOrder.indexOf(b.title);
+
+        if (indexA !== -1 && indexB !== -1) return indexA - indexB;
+        if (indexA !== -1) return -1;
+        if (indexB !== -1) return 1;
+
+        // General Fallback Sorting Rule (Flight > Transport > Hotel > Experience/Restaurant)
+        const getTypeWeight = (card: BookingCard) => {
+            if (card.type === 'flight') return 1;
+            if (card.title.includes('周遊券') || card.title.includes('車票') || card.title.includes('交通')) return 2;
+            if (card.type === 'hotel') return 3;
+            return 4; // experience or restaurant
+        };
+
+        const typeA = getTypeWeight(a);
+        const typeB = getTypeWeight(b);
+        if (typeA !== typeB) return typeA - typeB;
+
+        // General Fallback Geography Rule: Yuzawa -> Fuji -> Tokyo
+        const getLocWeight = (title: string) => {
+            if (title.includes("湯澤") || title.includes("新潟") || title.includes("滑雪")) return 1;
+            if (title.includes("富士") || title.includes("河口湖")) return 2;
+            if (title.includes("東京") || title.includes("新宿")) return 3;
+            return 4;
+        };
+        return getLocWeight(a.title) - getLocWeight(b.title);
+    });
 
     return AgentTools.generate_flex_message("group_consensus_card", baseSummary);
 }
