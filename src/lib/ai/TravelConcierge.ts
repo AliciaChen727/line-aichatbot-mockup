@@ -34,9 +34,14 @@ export const AgentTools = {
         if (query.includes("越後湯澤") || query.includes("滑雪")) {
             results.push(
                 {
+                    type: 'experience', title: '越後湯澤車站', rating: 4.8, price: '',
+                    imageUrl: '/echigo_yuzawa.jpg',
+                    actions: [{ label: '查看詳情', url: 'https://travel.line.me/poi/5ed7da59fa3c974c9401b9b2?liff.referrer=https%3A%2F%2Ftravel.line.me%2F' }]
+                },
+                {
                     type: 'hotel', title: '松泉閤花月 (Shosenkaku Kagetsu)', rating: 4.6, price: 'NT$ 7,495 / 晚',
                     imageUrl: '/shosenkaku_kagetsu.jpg',
-                    actions: [{ label: '查看詳情', url: 'https://travel.line.me/hotels' }, { label: '立即預訂', url: 'https://travel.line.me/hotels' }],
+                    actions: [{ label: '查看詳情', url: 'https://www.klook.com/zh-TW/hotels/detail/558686-shosenkaku-kagetsu/?spm=SearchResult.SearchResult_LIST&clickId=93be432246' }, { label: '立即預訂', url: 'https://www.klook.com/zh-TW/hotels/detail/558686-shosenkaku-kagetsu/?spm=SearchResult.SearchResult_LIST&clickId=93be432246' }],
                     linePointsReward: 8
                 },
                 {
@@ -151,6 +156,12 @@ export async function processGroupChat(messages: ChatMessage[]): Promise<ParsedS
     // Common flights
     if (allText.includes("日本") || allText.includes("東京")) {
         baseSummary.bookingCards!.unshift(...AgentTools.search_travel_inventory("機票", {}));
+        baseSummary.bookingCards!.push({
+            type: 'hotel', title: '新宿西鐵酒店', rating: 4.8, price: 'NT$ 4,959 / 晚',
+            imageUrl: '/nishitetsu_inn.jpg',
+            actions: [{ label: '查看詳情', url: 'https://travel.line.me/hotels/61f5349a6452b9154cd625c2?checkinDate=2026-03-11&checkoutDate=2026-03-12&numOfAdult=2&numOfChildren=0&numOfRoom=1' }, { label: '立即預訂', url: 'https://www.agoda.com/zh-tw/nishitetsu-inn-shinjuku/hotel/tokyo-jp.html?cid=1807871&currency=TWD&checkin=2026-03-11&checkout=2026-03-12&numberofchildren=0&mcid=27938&masterroomid=3135656&tag=DV968VSPaZ&hid=234458&adults=2&rooms=1&los=1&pslc=1&ds=pkRigr9ki4sp2GDW' }],
+            linePointsReward: 8
+        });
     }
 
     // Step 3: Generation Strategy
