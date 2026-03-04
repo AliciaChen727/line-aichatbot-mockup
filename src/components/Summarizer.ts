@@ -100,7 +100,7 @@ export async function summarizeMessages(messages: ChatMessage[]): Promise<Parsed
             title: '越後湯澤車站',
             rating: 4.8,
             price: '', // No price available
-            imageUrl: 'https://images.pexels.com/photos/1769275/pexels-photo-1769275.jpeg?auto=compress&cs=tinysrgb&w=800', // Snowy station-like vibe
+            imageUrl: '/echigo_yuzawa.jpg', // Snowy station-like vibe
             actions: [
                 { label: '查看詳情', url: 'https://travel.line.me/poi/5ed7da59fa3c974c9401b9b2?liff.referrer=https%3A%2F%2Ftravel.line.me%2F' }
             ]
