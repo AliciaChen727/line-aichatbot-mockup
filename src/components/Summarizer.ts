@@ -71,14 +71,23 @@ export async function summarizeMessages(messages: ChatMessage[]): Promise<Parsed
         summary.bookingCards.push({
             type: 'experience', title: 'JR 新幹線車票:東京→新潟', rating: 0, price: 'TWD 2,237',
             imageUrl: '/shinkansen_niigata.jpg',
-            actions: [{ label: '查看詳情', url: 'https://www.kkday.com/zh-tw/transportation/list_page/japan-rail/jp-tokyo-rail-to-jp-niigata-rail?dep_code=JP-2-00001&arr_code=JP-2-00085&dep_date=20260311' },{ label: '立即預訂', url: 'https://www.kkday.com/zh-tw/transportation/list_page/japan-rail/jp-tokyo-rail-to-jp-niigata-rail?dep_code=JP-2-00001&arr_code=JP-2-00085&dep_date=20260311' }],
+            actions: [{ label: '查看詳情', url: 'https://www.kkday.com/zh-tw/transportation/list_page/japan-rail/jp-tokyo-rail-to-jp-niigata-rail?dep_code=JP-2-00001&arr_code=JP-2-00085&dep_date=20260311' }, { label: '立即預訂', url: 'https://www.kkday.com/zh-tw/transportation/list_page/japan-rail/jp-tokyo-rail-to-jp-niigata-rail?dep_code=JP-2-00001&arr_code=JP-2-00085&dep_date=20260311' }],
             linePointsReward: 4.5
         });
         summary.bookingCards.push({
             type: 'experience', title: '富士回遊號 列車票:新宿→下吉田', rating: 0, price: 'TWD 861',
             imageUrl: '/fuji_excursion.jpg',
-            actions: [{ label: '查看詳情', url: 'https://www.kkday.com/zh-tw/transportation/list_page/japan-rail/jp-shinjuku-rail-to-jp-shimo-yoshida-rail?dep_code=JP-2-00111&arr_code=JP-2-00133&dep_date=20260311' },{ label: '立即預訂', url: 'https://www.kkday.com/zh-tw/transportation/list_page/japan-rail/jp-shinjuku-rail-to-jp-shimo-yoshida-rail?dep_code=JP-2-00111&arr_code=JP-2-00133&dep_date=20260311' }],
+            actions: [{ label: '查看詳情', url: 'https://www.kkday.com/zh-tw/transportation/list_page/japan-rail/jp-shinjuku-rail-to-jp-shimo-yoshida-rail?dep_code=JP-2-00111&arr_code=JP-2-00133&dep_date=20260311' }, { label: '立即預訂', url: 'https://www.kkday.com/zh-tw/transportation/list_page/japan-rail/jp-shinjuku-rail-to-jp-shimo-yoshida-rail?dep_code=JP-2-00111&arr_code=JP-2-00133&dep_date=20260311' }],
             linePointsReward: 4.5
+        });
+    }
+
+    if (allText.includes("日本") || allText.includes("東京") || allText.includes("廣域") || allText.includes("周遊券")) {
+        summary.bookingCards.push({
+            type: 'experience', title: 'JR 東京廣域周遊券', rating: 0, price: 'TWD 3,110',
+            imageUrl: 'https://image.kkday.com/v2/image/get/w_1000%2Cc_fit/s1.kkday.com/product_158964/20240118025211_bNofl/jpeg',
+            actions: [{ label: '查看詳情', url: 'https://www.kkday.com/zh-tw/product/158964?ud1=bmLmxozICA&cid=5954&openExternalBrowser=1' }, { label: '立即預訂', url: 'https://www.kkday.com/zh-tw/product/158964?ud1=bmLmxozICA&cid=5954&openExternalBrowser=1' }],
+            linePointsReward: 0.5
         });
     }
 
