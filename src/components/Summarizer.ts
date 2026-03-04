@@ -77,23 +77,24 @@ export async function summarizeMessages(messages: ChatMessage[]): Promise<Parsed
             linePointsReward: 5
         });
     }
-    if (allText.includes("富士山") || allText.includes("逛街")) {
-        // We'll replace the Mt Fuji card with the requested Echigo Yuzawa Station card
-        // since the user wants it to replace the second card shown in the screenshot.
+    if (allText.includes("富士山")) {
+        summary.confirmedItinerary.push("河口湖看富士山");
+        // Inject a mocked Experience booking card for Mt Fuji
         summary.bookingCards.push({
-            type: 'experience', // Keep as experience or change to 'attraction'
-            title: '越後湯澤車站',
+            type: 'experience',
+            title: '富士山＆河口湖經典美景一日遊',
             rating: 4.8,
-            price: '',
-            imageUrl: '/echigo_yuzawa.jpg',
+            price: 'NT$ 1,350 起',
+            imageUrl: 'https://images.pexels.com/photos/3408354/pexels-photo-3408354.jpeg?auto=compress&cs=tinysrgb&w=800',
             actions: [
-                { label: '查看詳情', url: 'https://travel.line.me/poi/5ed7da59fa3c974c9401b9b2?liff.referrer=https%3A%2F%2Ftravel.line.me%2F' }
-            ]
+                { label: '查看詳情', url: 'https://travel.line.me/poi/5ed7da7dfa3c974c94026268?liff.referrer=https%3A%2F%2Ftravel.line.me%2F' }
+            ],
+            linePointsReward: 5
         });
     }
 
     if (allText.includes("逛街") && allText.includes("滑雪")) {
-        summary.pendingItems.push("行程衝突：有人想滑雪，有人想逛街，需協調時間");
+        summary.pendingItems.push("行程衝突：有人想滑雪，有人想逛街，有人想去河口湖富士山，需協調時間");
     }
 
     if (allText.includes("燒肉") || allText.includes("和牛")) {

@@ -112,7 +112,8 @@ export default function FlexMessageUI({ summary, time }: FlexMessageUIProps) {
                                                         <span className="text-blue-700 dark:text-blue-400 font-bold text-[12px]">旅遊助手建議</span>
                                                     </div>
                                                     <p className="text-blue-800 dark:text-blue-300 text-[12px] mt-1 mb-0 leading-relaxed font-medium">
-                                                        偵測到行程分歧！建議早上安排<span className="font-bold underline">越後湯澤車站逛街</span>，同時安排專車送另一批人前往<span className="font-bold underline">越後湯澤滑雪場</span>，晚上再會合吃燒肉，這樣大家都能玩得開心！
+                                                        偵測到行程分歧！由於越後湯澤（新潟）與河口湖（山梨）分處東京的一北一南，建議以東京為核心，規劃V字型放射狀行程。推薦使用 「JR東京廣域周遊券」，一張票即可輕鬆搞定新幹線與特急列車的高昂交通費。<br /><br />
+                                                        前三天直奔越後湯澤：早晨分頭行動，一組人由專車接送至滑雪場享受粉雪，另一組則在越後湯澤車站悠閒逛街、品嚐清酒，晚上再聚首大啖暖心燒肉。第四天返回東京並轉乘直達河口湖，與壯麗的富士山相遇；第五天重返東京市區，享受最後的購物衝刺。分進合擊的完美安排，讓滑雪愛好者與觀光族都能盡興而歸！
                                                     </p>
                                                     <div className="mt-2 flex gap-2">
                                                         <button className="flex-1 bg-white dark:bg-[#1a232b] text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-700/50 rounded py-1 px-2 text-[11px] font-bold shadow-sm hover:bg-blue-50 transition-colors">
