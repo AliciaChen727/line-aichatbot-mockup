@@ -82,7 +82,7 @@ export async function summarizeMessages(messages: ChatMessage[]): Promise<Parsed
         // Inject a mocked Experience booking card for Mt Fuji
         summary.bookingCards.push({
             type: 'experience',
-            title: '河口湖電動腳踏車租借',
+            title: '富士山・河口湖美景觀光 自行車租借河口湖巡游',
             rating: 4.8,
             price: 'NT$ 301 起',
             imageUrl: 'https://images.pexels.com/photos/3408354/pexels-photo-3408354.jpeg?auto=compress&cs=tinysrgb&w=800',
