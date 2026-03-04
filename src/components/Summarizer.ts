@@ -159,7 +159,7 @@ export async function summarizeMessages(messages: ChatMessage[]): Promise<Parsed
             title: 'JR 新幹線車票:東京→新潟',
             rating: 0,
             price: 'TWD 2,237',
-            imageUrl: 'https://images.pexels.com/photos/1630132/pexels-photo-1630132.jpeg?auto=compress&cs=tinysrgb&w=800', // Placeholder Shinkansen/train image
+            imageUrl: 'https://www.jreast.co.jp/zh-CHT/multi/routemaps/tohokushinkansen.html', // JR East Shinkansen map
             actions: [
                 { label: '查看詳情', url: 'https://www.kkday.com/zh-tw/transportation/list_page/japan-rail/jp-tokyo-rail-to-jp-niigata-rail?dep_code=JP-2-00001&arr_code=JP-2-00085&dep_date=20260311' },
                 { label: '立即預訂', url: 'https://www.kkday.com/zh-tw/transportation/list_page/japan-rail/jp-tokyo-rail-to-jp-niigata-rail?dep_code=JP-2-00001&arr_code=JP-2-00085&dep_date=20260311' }
@@ -173,7 +173,7 @@ export async function summarizeMessages(messages: ChatMessage[]): Promise<Parsed
             title: '富士回遊號 列車票:新宿→下吉田',
             rating: 0,
             price: 'TWD 861',
-            imageUrl: 'https://images.pexels.com/photos/1630132/pexels-photo-1630132.jpeg?auto=compress&cs=tinysrgb&w=800', // Placeholder train image
+            imageUrl: 'https://images.summitmedia-digital.com/esme/images/2023/12/28/japan-shinkansen-01-1703759972.jpg', // Train image
             actions: [
                 { label: '查看詳情', url: 'https://www.kkday.com/zh-tw/transportation/list_page/japan-rail/jp-shinjuku-rail-to-jp-shimo-yoshida-rail?dep_code=JP-2-00111&arr_code=JP-2-00133&dep_date=20260311' },
                 { label: '立即預訂', url: 'https://www.kkday.com/zh-tw/transportation/list_page/japan-rail/jp-shinjuku-rail-to-jp-shimo-yoshida-rail?dep_code=JP-2-00111&arr_code=JP-2-00133&dep_date=20260311' }
