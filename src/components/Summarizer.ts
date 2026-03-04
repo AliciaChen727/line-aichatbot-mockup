@@ -153,6 +153,20 @@ export async function summarizeMessages(messages: ChatMessage[]): Promise<Parsed
             linePointsReward: 2
         });
 
+        // Add Shinkansen Ticket
+        summary.bookingCards.push({
+            type: 'experience', // Using experience for transport tickets
+            title: 'JR 新幹線車票:東京→新潟',
+            rating: 0,
+            price: 'TWD 2,237',
+            imageUrl: 'https://images.pexels.com/photos/1630132/pexels-photo-1630132.jpeg?auto=compress&cs=tinysrgb&w=800', // Placeholder Shinkansen/train image
+            actions: [
+                { label: '查看詳情', url: 'https://www.kkday.com/zh-tw/transportation/list_page/japan-rail/jp-tokyo-rail-to-jp-niigata-rail?dep_code=JP-2-00001&arr_code=JP-2-00085&dep_date=20260311' },
+                { label: '立即預訂', url: 'https://www.kkday.com/zh-tw/transportation/list_page/japan-rail/jp-tokyo-rail-to-jp-niigata-rail?dep_code=JP-2-00001&arr_code=JP-2-00085&dep_date=20260311' }
+            ],
+            linePointsReward: 4.5
+        });
+
         // Add Tokyo Hotel
         summary.bookingCards.push({
             type: 'hotel',
