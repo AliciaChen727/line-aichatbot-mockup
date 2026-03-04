@@ -82,14 +82,14 @@ export async function summarizeMessages(messages: ChatMessage[]): Promise<Parsed
         // Inject a mocked Experience booking card for Mt Fuji
         summary.bookingCards.push({
             type: 'experience',
-            title: '富士山＆河口湖經典美景一日遊',
+            title: '河口湖電動腳踏車租借',
             rating: 4.8,
-            price: 'NT$ 1,350 起',
+            price: 'NT$ 301 起',
             imageUrl: 'https://images.pexels.com/photos/3408354/pexels-photo-3408354.jpeg?auto=compress&cs=tinysrgb&w=800',
             actions: [
-                { label: '查看詳情', url: 'https://travel.line.me/poi/5ed7da7dfa3c974c94026268?liff.referrer=https%3A%2F%2Ftravel.line.me%2F' }
+                { label: '查看詳情', url: 'https://www.klook.com/zh-TW/activity/174871-mt-fuji-rental-bike-at-lake-kawaguchi/?ad_feed_id=560&aid=api%7C13179%7Cv7l4FYgsGn&openExternalBrowser=1&utm_medium=affiliate-alwayson&utm_source=non-network&utm_campaign=13179&utm_term=' }
             ],
-            linePointsReward: 5
+            linePointsReward: 9
         });
     }
 
