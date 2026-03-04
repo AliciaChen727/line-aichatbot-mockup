@@ -159,7 +159,8 @@ export async function summarizeMessages(messages: ChatMessage[]): Promise<Parsed
             title: 'JR 新幹線車票:東京→新潟',
             rating: 0,
             price: 'TWD 2,237',
-            imageUrl: 'https://images.pexels.com/photos/1034665/pexels-photo-1034665.jpeg?auto=compress&cs=tinysrgb&w=800', // JR East Shinkansen map isn't an image. Let's use a nice Shinkansen placeholder from Pexels/Unsplash or fallback to what we had
+            // Using a direct Shinkansen E5 series image
+            imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/JRE_Shinkansen_E5.jpg/1200px-JRE_Shinkansen_E5.jpg',
             actions: [
                 { label: '查看詳情', url: 'https://www.kkday.com/zh-tw/transportation/list_page/japan-rail/jp-tokyo-rail-to-jp-niigata-rail?dep_code=JP-2-00001&arr_code=JP-2-00085&dep_date=20260311' },
                 { label: '立即預訂', url: 'https://www.kkday.com/zh-tw/transportation/list_page/japan-rail/jp-tokyo-rail-to-jp-niigata-rail?dep_code=JP-2-00001&arr_code=JP-2-00085&dep_date=20260311' }
@@ -173,7 +174,8 @@ export async function summarizeMessages(messages: ChatMessage[]): Promise<Parsed
             title: '富士回遊號 列車票:新宿→下吉田',
             rating: 0,
             price: 'TWD 861',
-            imageUrl: 'https://images.pexels.com/photos/3408354/pexels-photo-3408354.jpeg?auto=compress&cs=tinysrgb&w=800', // Train image
+            // Using a direct E353 series (Azusa/Kaiji/Fuji Excursion) image
+            imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/E353_series_S101_formation_20150726.jpg/1200px-E353_series_S101_formation_20150726.jpg',
             actions: [
                 { label: '查看詳情', url: 'https://www.kkday.com/zh-tw/transportation/list_page/japan-rail/jp-shinjuku-rail-to-jp-shimo-yoshida-rail?dep_code=JP-2-00111&arr_code=JP-2-00133&dep_date=20260311' },
                 { label: '立即預訂', url: 'https://www.kkday.com/zh-tw/transportation/list_page/japan-rail/jp-shinjuku-rail-to-jp-shimo-yoshida-rail?dep_code=JP-2-00111&arr_code=JP-2-00133&dep_date=20260311' }
