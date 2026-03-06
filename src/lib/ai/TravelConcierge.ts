@@ -24,10 +24,10 @@ export const AgentTools = {
 
         if (query.includes("機票")) {
             results.push({
-                type: 'flight', title: '台北 (TPE) ⇌ 東京 (NRT) 來回機票', rating: 0, price: 'NT$ 7,887 起',
+                type: 'flight', title: '台北 (TPE) ⇌ 東京 (NRT) 來回機票', rating: 0, price: 'NT$ 7,858 起',
                 imageUrl: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=400&auto=format&fit=crop',
                 actions: [{ label: '查看航班', url: 'https://travel.line.me/flights/list?roundType=1&cabinClass=1&numOfAdult=1&numOfChildren=0&numOfBaby=0&linePointsRebateOnly=1&departureAirports=&departureCities=TPE&departureDates=1773360000000&arrivalAirports=&arrivalCities=TYO&departureAirports=&departureCities=TYO&departureDates=1773964800000&arrivalAirports=&arrivalCities=TPE' }],
-                linePointsReward: 2
+                linePointsReward: 3
             });
         }
 
@@ -56,10 +56,10 @@ export const AgentTools = {
         if (query.includes("富士山") || query.includes("河口湖")) {
             results.push(
                 {
-                    type: 'hotel', title: 'cottage Di MUSiCA', rating: 4.5, price: 'NT$ 4,263 / 晚',
+                    type: 'hotel', title: 'cottage Di MUSiCA', rating: 4.5, price: 'NT$ 7,179 / 晚',
                     imageUrl: '/cottage_di_musica.jpg',
                     actions: [{ label: '查看詳情', url: 'https://travel.line.me/hotels/61f5353c6452b9154cd7e06e?checkinDate=2026-03-13&checkoutDate=2026-03-14&numOfAdult=2&numOfChildren=0&numOfRoom=1' }, { label: '立即預訂', url: 'https://www.booking.com/hotel/jp/di-musica.html?aid=1535049&label=cuSbpNO3Wb&cid=line&openExternalBrowser=1&chal_t=1772786398808&force_referer=https%3A%2F%2Ftravel.line.me%2F' }],
-                    linePointsReward: 5
+                    linePointsReward: 3
                 },
                 {
                     type: 'experience', title: '富士山・河口湖美景觀光 自行車租借河口湖巡游', rating: 4.8, price: 'NT$ 301 起',
