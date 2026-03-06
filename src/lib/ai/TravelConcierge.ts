@@ -58,7 +58,7 @@ export const AgentTools = {
                 {
                     type: 'hotel', title: 'cottage Di MUSiCA', rating: 4.5, price: 'NT$ 4,263 / 晚',
                     imageUrl: '/cottage_di_musica.jpg',
-                    actions: [{ label: '查看詳情', url: 'https://travel.line.me/hotels' }, { label: '立即預訂', url: 'https://travel.line.me/hotels' }],
+                    actions: [{ label: '查看詳情', url: 'https://travel.line.me/hotels/61f5353c6452b9154cd7e06e?checkinDate=2026-03-13&checkoutDate=2026-03-14&numOfAdult=2&numOfChildren=0&numOfRoom=1' }, { label: '立即預訂', url: 'https://www.booking.com/hotel/jp/di-musica.html?aid=1535049&label=cuSbpNO3Wb&cid=line&openExternalBrowser=1&chal_t=1772786398808&force_referer=https%3A%2F%2Ftravel.line.me%2F' }],
                     linePointsReward: 5
                 },
                 {
