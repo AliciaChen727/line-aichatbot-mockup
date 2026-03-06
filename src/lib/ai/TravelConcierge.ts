@@ -82,7 +82,7 @@ export const AgentTools = {
             results.push({
                 type: 'experience', title: 'JR 東京廣域周遊券', rating: 0, price: 'TWD 3,110',
                 imageUrl: '/twp_new.jpg',
-                actions: [{ label: '查看詳情', url: 'https://travel.line.me/experiences' }, { label: '立即預訂', url: 'https://travel.line.me/experiences' }],
+                actions: [{ label: '查看詳情', url: 'https://travel.line.me/experiences/list?keyword=JR+%E6%9D%B1%E4%BA%AC%E5%BB%A3%E5%9F%9F%E5%91%A8%E9%81%8A%E5%88%B8&id=658c65b178f6130007ec29a1' }, { label: '立即預訂', url: 'https://travel.line.me/experiences' }],
                 linePointsReward: 0.5
             });
         }
