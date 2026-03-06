@@ -47,7 +47,7 @@ export const AgentTools = {
                 {
                     type: 'experience', title: '湯澤滑雪場中文私人滑雪課程', rating: 5.0, price: '3小時NT$ 13,750起',
                     imageUrl: 'https://images.pexels.com/photos/848682/pexels-photo-848682.jpeg?auto=compress&cs=tinysrgb&w=800',
-                    actions: [{ label: '看體驗', url: 'https://travel.line.me/experiences' }],
+                    actions: [{ label: '看體驗', url: 'https://travel.line.me/experiences/list?keyword=%E6%B9%AF%E6%BE%A4%E6%BB%91%E9%9B%AA%E5%A0%B4%E4%B8%AD%E6%96%87%E7%A7%81%E4%BA%BA%E6%BB%91%E9%9B%AA%E8%AA%B2%E7%A8%8B' }, { label: '立即預訂', url: 'https://www.klook.com/zh-TW/activity/128393-echigo-yuzawa-ski-lesson/?ad_feed_id=560&aid=api%7C13179%7CpQ9U5JhPlA&openExternalBrowser=1&utm_medium=affiliate-alwayson&utm_source=non-network&utm_campaign=13179&utm_term=' }],
                     linePointsReward: 5
                 }
             );
