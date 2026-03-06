@@ -64,7 +64,7 @@ export const AgentTools = {
                 {
                     type: 'experience', title: '富士山・河口湖美景觀光 自行車租借河口湖巡游', rating: 4.8, price: 'NT$ 301 起',
                     imageUrl: 'https://images.pexels.com/photos/3408354/pexels-photo-3408354.jpeg?auto=compress&cs=tinysrgb&w=800',
-                    actions: [{ label: '查看詳情', url: 'https://travel.line.me/experiences' }],
+                    actions: [{ label: '查看詳情', url: 'https://travel.line.me/experiences/list?keyword=%E5%AF%8C%E5%A3%AB%E5%B1%B1%E3%83%BB%E6%B2%B3%E5%8F%A3%E6%B9%96%E7%BE%8E%E6%99%AF%E8%A7%80%E5%85%89+%E8%87%AA%E8%A1%8C%E8%BB%8A%E7%A7%9F%E5%80%9F%E6%B2%B3%E5%8F%A3%E6%B9%96%E5%B7%A1%E6%B8%B8' }, { label: '立即預訂', url: 'https://www.klook.com/zh-TW/activity/174871-mt-fuji-rental-bike-at-lake-kawaguchi/?ad_feed_id=560&aid=api%7C13179%7CILf7zGfJpx&openExternalBrowser=1&utm_medium=affiliate-alwayson&utm_source=non-network&utm_campaign=13179&utm_term=' }],
                     linePointsReward: 9
                 }
             );
