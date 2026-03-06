@@ -74,7 +74,7 @@ export const AgentTools = {
             results.push({
                 type: 'restaurant', title: '燒肉さかえや', rating: 4.2, price: 'NT$ 1,200 / 人',
                 imageUrl: 'https://images.pexels.com/photos/3186654/pexels-photo-3186654.jpeg?auto=compress&cs=tinysrgb&w=800',
-                actions: [{ label: '查看詳情', url: 'https://travel.line.me/restaurants' }]
+                actions: [{ label: '查看詳情', url: 'https://www.google.com/maps?sca_esv=24e12ee2c444327b&rlz=1C5CHFA_enTW1031TW1031&output=search&q=%E7%87%92%E8%82%89%E3%81%95%E3%81%8B%E3%81%88%E3%82%84+google+map&source=lnms&fbs=ADc_l-aN0CWEZBOHjofHoaMMDiKpUrv6YeyJhXfuYqj4Fj6c1Tg5t_ufWNUvD2V-uX26AFmzd3PgOqQPiZGQbkKtfgZKbvRjqymWX6R2FJ9Zpl8YIzWBe3FGN3hnfYgkxmoQ4QaBhVlbm-tF5GsIWSWz-92DuwziCG5EK_QZ1HE0r3jbhqD4WZR1MBiBiN47-GAZzb4Q2akc9ubvF0nUIG3cD7hTgNpx8Q&entry=mc&ved=1t:200715&ictx=111' }]
             });
         }
 
