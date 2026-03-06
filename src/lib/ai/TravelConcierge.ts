@@ -26,7 +26,7 @@ export const AgentTools = {
             results.push({
                 type: 'flight', title: '台北 (TPE) ⇌ 東京 (NRT) 來回機票', rating: 0, price: 'NT$ 7,887 起',
                 imageUrl: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=400&auto=format&fit=crop',
-                actions: [{ label: '查看航班', url: 'https://travel.line.me/flights' }],
+                actions: [{ label: '查看航班', url: 'https://travel.line.me/flights/list?roundType=1&cabinClass=1&numOfAdult=1&numOfChildren=0&numOfBaby=0&linePointsRebateOnly=1&departureAirports=&departureCities=TPE&departureDates=1773360000000&arrivalAirports=&arrivalCities=TYO&departureAirports=&departureCities=TYO&departureDates=1773964800000&arrivalAirports=&arrivalCities=TPE' }],
                 linePointsReward: 2
             });
         }
